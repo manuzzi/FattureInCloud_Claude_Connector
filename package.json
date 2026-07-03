@@ -1,0 +1,32 @@
+{
+  "name": "fattureincloud-claude-connector",
+  "version": "0.1.0",
+  "description": "MCP server per collegare Claude Desktop a Fatture in Cloud (analisi dati, preventivi, bozze fattura)",
+  "license": "MIT",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "fattureincloud-claude-connector": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node build/index.js",
+    "dev": "tsc --watch",
+    "package": "npm run build && mcpb pack . fattureincloud-claude-connector.mcpb && mcpb clean fattureincloud-claude-connector.mcpb"
+  },
+  "dependencies": {
+    "@fattureincloud/fattureincloud-ts-sdk": "^2.1.3",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "axios": "^1.18.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2",
+    "@types/node": "^22.14.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

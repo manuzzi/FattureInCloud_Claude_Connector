@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Verifica coerenza versione tag / package.json / manifest.json
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          MANIFEST_VERSION="$(node -p "require('./manifest.json').version")"
+
+          normalize() {
+            IFS='.' read -r major minor patch <<< "$1"
+            echo "${major:-0}.${minor:-0}.${patch:-0}"
+          }
+
+          if [ "$(normalize "$TAG_VERSION")" != "$(normalize "$PKG_VERSION")" ]; then
+            echo "::error::Il tag ${GITHUB_REF_NAME} non corrisponde alla versione in package.json (${PKG_VERSION})"
+            exit 1
+          fi
+
+          if [ "$PKG_VERSION" != "$MANIFEST_VERSION" ]; then
+            echo "::error::package.json (${PKG_VERSION}) e manifest.json (${MANIFEST_VERSION}) hanno versioni diverse"
+            exit 1
+          fi
+
+      - name: Installa dipendenze
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Build pacchetto .mcpb
+        run: npm run package
+
+      - name: Crea release GitHub
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            fattureincloud-claude-connector.mcpb \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes

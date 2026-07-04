@@ -3,7 +3,8 @@
 Connettore MCP per Claude Desktop che collega [Fatture in Cloud](https://fattureincloud.it) per:
 
 - analizzare anagrafiche clienti/fornitori, catalogo prodotti/servizi, preventivi, fatture, corrispettivi e situazione incassi;
-- creare nuovi **preventivi** e **fatture** per un cliente esistente.
+- creare nuovi **preventivi** e **fatture** per un cliente esistente;
+- gestire il catalogo prodotti/servizi (creare, modificare ed eliminare voci).
 
 Il connettore **non implementa mai** l'invio email o la trasmissione allo SDI: crea solo il documento. L'emissione definitiva resta un'azione manuale da completare direttamente in Fatture in Cloud.
 
@@ -38,6 +39,8 @@ Per il type-check senza compilare: `npm run typecheck`.
 | `fic_list_suppliers` / `fic_get_supplier` | Anagrafica fornitori |
 | `fic_list_products` / `fic_get_product` | Catalogo prodotti/servizi e stock |
 | `fic_list_vat_types` | Aliquote IVA configurate |
+| `fic_create_product` / `fic_update_product` | Crea e modifica prodotti/servizi a catalogo |
+| `fic_delete_product` | Elimina definitivamente un prodotto/servizio (azione distruttiva, non reversibile) |
 | `fic_list_quotes` / `fic_list_invoices` / `fic_get_document` | Lettura preventivi e fatture |
 | `fic_create_quote` | Crea un preventivo |
 | `fic_create_invoice_draft` | Crea una fattura (mai inviata/emessa in automatico) |

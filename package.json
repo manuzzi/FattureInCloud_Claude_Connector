@@ -1,6 +1,6 @@
 {
   "name": "fattureincloud-claude-connector",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "MCP server per collegare Claude Desktop a Fatture in Cloud (analisi dati, preventivi, bozze fattura)",
   "license": "MIT",
   "type": "module",

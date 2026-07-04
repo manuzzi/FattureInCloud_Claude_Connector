@@ -2,9 +2,9 @@
   "manifest_version": "0.2",
   "name": "fattureincloud-claude-connector",
   "display_name": "Fatture in Cloud",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "MCP server per collegare Claude Desktop a Fatture in Cloud (analisi dati, preventivi, bozze fattura)",
-  "long_description": "Consente a Claude di leggere anagrafiche clienti/fornitori, catalogo prodotti/servizi, preventivi, fatture e situazione incassi da Fatture in Cloud, e di creare nuovi preventivi e fatture per un cliente esistente. Il connettore non implementa mai l'invio email o la trasmissione allo SDI: l'emissione definitiva resta un'azione manuale da completare direttamente in Fatture in Cloud.",
+  "long_description": "Consente a Claude di leggere anagrafiche clienti/fornitori, catalogo prodotti/servizi, preventivi, fatture e situazione incassi da Fatture in Cloud, di gestire il catalogo prodotti/servizi (creazione, modifica ed eliminazione) e di creare nuovi preventivi e fatture per un cliente esistente. Il connettore non implementa mai l'invio email o la trasmissione allo SDI: l'emissione definitiva resta un'azione manuale da completare direttamente in Fatture in Cloud.",
   "author": {
     "name": "Marco Manuzzi",
     "email": "marco.manuzzi@icloud.com"
@@ -46,6 +46,9 @@
     { "name": "fic_list_products", "description": "Elenca prodotti/servizi a catalogo" },
     { "name": "fic_get_product", "description": "Dettaglio di un prodotto/servizio, incluso lo stock" },
     { "name": "fic_list_vat_types", "description": "Elenca le aliquote IVA configurate" },
+    { "name": "fic_create_product", "description": "Crea un nuovo prodotto/servizio nel catalogo" },
+    { "name": "fic_update_product", "description": "Modifica un prodotto/servizio esistente" },
+    { "name": "fic_delete_product", "description": "Elimina definitivamente un prodotto/servizio dal catalogo" },
     { "name": "fic_list_quotes", "description": "Elenca i preventivi" },
     { "name": "fic_list_invoices", "description": "Elenca le fatture" },
     { "name": "fic_get_document", "description": "Dettaglio di un documento emesso" },

@@ -4,7 +4,7 @@ import { registerAllTools } from "./tools/registry.js";
 
 const server = new McpServer({
   name: "fattureincloud-claude-connector",
-  version: "0.1.0",
+  version: "1.1.0",
 });
 
 registerAllTools(server);

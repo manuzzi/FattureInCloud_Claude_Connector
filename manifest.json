@@ -2,7 +2,7 @@
   "manifest_version": "0.2",
   "name": "fattureincloud-claude-connector",
   "display_name": "Fatture in Cloud",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "MCP server per collegare Claude Desktop a Fatture in Cloud (analisi dati, preventivi, bozze fattura)",
   "long_description": "Consente a Claude di leggere anagrafiche clienti/fornitori, catalogo prodotti/servizi, preventivi, fatture e situazione incassi da Fatture in Cloud, di gestire il catalogo prodotti/servizi (creazione, modifica ed eliminazione) e di creare nuovi preventivi e fatture per un cliente esistente. Il connettore non implementa mai l'invio email o la trasmissione allo SDI: l'emissione definitiva resta un'azione manuale da completare direttamente in Fatture in Cloud.",
   "author": {
@@ -60,5 +60,5 @@
     { "name": "fic_get_revenue_summary", "description": "Riepilogo del fatturato in un intervallo di date" }
   ],
   "keywords": ["fatture in cloud", "fatturazione", "preventivi", "invoicing", "italy"],
-  "license": "MIT"
+  "license": "GPL-3.0-only"
 }
